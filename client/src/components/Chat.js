@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import quertString from 'query-string';
 import io from 'socket.io-client';
 
+import './styles/Chat.css';
 let socket;
 
 const Chat = ({ location }) => {
@@ -44,7 +45,7 @@ const Chat = ({ location }) => {
     }
   }
 
-  console.log(message, messages)
+  console.log(message, messages,)
 
   return (
     <div className="outerContainer">
