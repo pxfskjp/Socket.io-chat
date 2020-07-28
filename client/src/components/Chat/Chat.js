@@ -4,6 +4,7 @@ import io from 'socket.io-client';
 
 import './Chat.css';
 import InfoBar from '../Infobar/Infobar';
+import Input from '../Input/Input';
 
 // import InfoBar from './Infobar';
 let socket;
@@ -56,12 +57,7 @@ const Chat = ({ location }) => {
 
         <InfoBar room={room}/>
 
-
-        {/* <input 
-        value={message} 
-        onChange={(event) => setMessage(event.target.value)}
-        onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-        /> */}
+        <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
       </div>
     </div>
   )
