@@ -2,7 +2,7 @@ const express =  require ('express');
 const socketio = require('socket.io');
 const http = require('http'); 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 const router = require('./router'); 
 
@@ -13,9 +13,9 @@ const io = socketio(server);
 io.on('connection', (socket) => {
   console.log('new connection');
 
-  socket.on('disconnect'), () => {
-    console.log('User has left!!');
-  }
+  socket.on('disconnect', () => {
+    console.log('User has left!')
+  })
 });
 
 app.use(router);
