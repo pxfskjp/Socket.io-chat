@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import quertString from 'query-string';
 import io from 'socket.io-client';
-import  { Redirect } from 'react-router-dom'
 
 import './Chat.css';
 import InfoBar from '../Infobar/Infobar';
 import Input from '../Input/Input';
 import Display from '../Display/Display';
+import TextContainer from '../TextContainer/TextContainer';
 
-
-
-// import InfoBar from './Infobar';
 let socket;
 
 const Chat = ({ location }) => {
@@ -18,8 +15,8 @@ const Chat = ({ location }) => {
   const [room, setRoomID] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  // const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
-  const ENDPOINT = 'localhost:4000';
+  const [users, setUsers] = useState('');
+  const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
 
   useEffect(() => {
     const { name, room } = quertString.parse(location.search);
@@ -32,7 +29,6 @@ const Chat = ({ location }) => {
     socket.emit('join', { name, room }, (error) => {
       if(error) {
         alert(error)
-        return <Redirect to="./"/>
       }
     });
   }, [ENDPOINT, location.search ]);
@@ -40,7 +36,11 @@ const Chat = ({ location }) => {
   useEffect(() => {
     socket.on('message', (message) => {
        setMessages([...messages, message])
-    })
+    });
+
+    socket.on("roomData", ({ users }) => {
+      setUsers(users);
+    });
   }, [messages]);
 
   const sendMessage = (event) => {
@@ -55,10 +55,13 @@ const Chat = ({ location }) => {
   console.log(message, messages,)
 
   return (
+    
     <div className="outerContainer">
       <div className="container">
-
-        <InfoBar room={room}/>
+        <InfoBar room={room} /> 
+        <div className="users">
+      <TextContainer users={users} />
+      </div>
         <Display messages ={messages} name={name} />
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
       </div>

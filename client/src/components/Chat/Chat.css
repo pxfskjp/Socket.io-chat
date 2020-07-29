@@ -10,8 +10,12 @@
   justify-content: space-between;
   background: rgba(0, 0, 0, 0.50);
   border-radius: 8px;
-  height: 62.5%;
+  height: 70%;
   width: 35%;
+}
+
+.users{
+  padding-left: 1%;
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
