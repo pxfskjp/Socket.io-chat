@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import quertString from 'query-string';
 import io from 'socket.io-client';
+import  { Redirect } from 'react-router-dom'
 
 import './Chat.css';
 import InfoBar from '../Infobar/Infobar';
 import Input from '../Input/Input';
 import Display from '../Display/Display';
+
 
 
 // import InfoBar from './Infobar';
@@ -16,7 +18,8 @@ const Chat = ({ location }) => {
   const [room, setRoomID] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
+  // const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
+  const ENDPOINT = 'localhost:4000';
 
   useEffect(() => {
     const { name, room } = quertString.parse(location.search);
@@ -26,14 +29,12 @@ const Chat = ({ location }) => {
     setUserName(name);
     setRoomID(room);
 
-    socket.emit('join', { name, room }, () => {
+    socket.emit('join', { name, room }, (error) => {
+      if(error) {
+        alert(error)
+        return <Redirect to="./"/>
+      }
     });
-
-    return () => {
-      socket.emit('disconnect');
-
-      socket.off();
-    }
   }, [ENDPOINT, location.search ]);
 
   useEffect(() => {
