@@ -1,5 +1,5 @@
 .messageBox {
-  background: #F3F3F3;
+  background: rgb(97, 221, 149);
   border-radius: 20px;
   padding: 0px 10px;
   color: black;
@@ -30,12 +30,13 @@
   display: flex;
   align-items: center;
   font-family: Helvetica;
-  color: #828282;
+  font-style: italic;
+  color: #555555;
   letter-spacing: 0.3px;
 }
 
 .pl-10 {
-  padding-left: 10px;
+  
 }
 
 .pr-10 {

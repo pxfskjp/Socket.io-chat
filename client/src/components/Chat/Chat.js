@@ -10,13 +10,14 @@ import TextContainer from '../TextContainer/TextContainer';
 
 let socket;
 
-const Chat = ({ location }) => {
+const Chat = ({ location, history }) => {
   const [name, setUserName] = useState('');
   const [room, setRoomID] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState('');
-  const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
+  // const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
+  const ENDPOINT = 'localhost:4000';
 
   useEffect(() => {
     const { name, room } = quertString.parse(location.search);
@@ -58,10 +59,10 @@ const Chat = ({ location }) => {
     
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room} /> 
-        <div className="users">
-      <TextContainer users={users} />
-      </div>
+        <InfoBar room={room} name={name} /> 
+          <div className="users">
+            <TextContainer users={users} />
+          </div>
         <Display messages ={messages} name={name} />
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage}/>
       </div>

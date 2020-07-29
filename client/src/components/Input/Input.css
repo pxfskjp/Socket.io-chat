@@ -1,14 +1,15 @@
 .form {
   display: flex;
   border-top: 2px solid  rgba(0, 0, 0, 0.50);
+  
 }
 
 .input {
   border: none;
-  border-radius: 0;
   padding: 5%;
   width: 80%;
   font-size: 1.2em;
+  border-radius: 20px;
 }
 
 input:focus, textarea:focus, select:focus{
@@ -22,7 +23,7 @@ input:focus, textarea:focus, select:focus{
   background: rgba(35, 121, 179, 0.5);
   padding: 20px;
   display: inline-block;
-  border: 2px solid white;
+  border-radius: 20px;
   width: 20%;
   height: 100%;
 }
