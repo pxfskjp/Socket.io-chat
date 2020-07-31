@@ -1,8 +1,5 @@
 # React Chat Application
 
-##### [*OVERVIEW*](#Overview) | [*HOW TO USE*](#How-to-use) 
-___
-
 A real time-time chat application using Socket.io, Node and React. 
 
 <img src="./images/Screenshot1.png" width=600 a>
