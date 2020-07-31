@@ -16,7 +16,7 @@ const Chat = ({ location, history }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState('');
-  const ENDPOINT = 'https://react-chat-mayerof.herokuapp.com/';
+  const ENDPOINT = 'localhost:4000';
 
 
   useEffect(() => {
